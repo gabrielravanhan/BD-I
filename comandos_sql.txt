@@ -1,0 +1,44 @@
+-- CRIA UM NOVO BANCO DE DADOS
+CREATE DATABASE <nome>; -- CRIA UM NOVO BANCO DE DADOS
+
+SHOW DATABASES;
+
+USE <nome>;
+
+CREATE DATABASE <nome> DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+DROP DATABASE <nome>;
+
+SHOW TABLES;
+
+CREATE TABLE <nome>(
+	<nome_campo> TIPO [DEMAIS PROPRIEDADES]
+);
+
+CREATE TABLE funcionarios (
+	id_funcionario INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(191) NOT NULL,
+	data_nascimento DATE,
+	cpf VARCHAR(14) UNIQUE NOT NULL,
+	salario DECIMAL(14,2),
+	deletado_em DATETIME,
+);
+
+CREATE TABLE fornecedores(
+	id_fornecedor int AUTO_INCREMENT,
+	nome varchar(30) NOT NULL,
+	email varchar(50),
+	PRIMARY KEY (id_fornecedor)
+);
+
+DESCRIBE <nome>;
+
+DROP TABLE <nome>;
+
+-- ADICIONAR CHAVE ESTRANGEIRA
+ALTER TABLE <nome_tabela_com_FK> ADD CONSTRAINT fk_<nome_tabela_PK> 
+FOREIGN KEY ( <campo_FK> ) REFERENCES <nome_tabela_PK> ( campo_PK ) ;
+
+ALTER TABLE cidade ADD CONSTRAINT fk_estado
+FOREIGN KEY (estado_id) REFERENCES estados (id_estado)
+
